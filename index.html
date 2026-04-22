@@ -2,7 +2,7 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
     <title>Apartment Management System | Dashboard thông minh</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -21,7 +21,6 @@
             overflow: hidden;
         }
 
-        /* --- APP CONTAINER --- */
         .app-container {
             display: flex;
             height: 100vh;
@@ -29,45 +28,22 @@
             position: relative;
         }
 
-        /* --- SIDEBAR (Desktop & Mobile) --- */
         .sidebar {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 260px;
-            height: 100%;
+            width: 280px;
             background: #ffffff;
             box-shadow: 4px 0 20px rgba(0, 0, 0, 0.03);
             display: flex;
             flex-direction: column;
-            padding: 24px 16px;
+            padding: 32px 20px;
             border-right: 1px solid rgba(0, 0, 0, 0.05);
-            z-index: 20;
-            transform: translateX(-100%);
-            transition: transform 0.3s ease;
-        }
-
-            .sidebar.open {
-                transform: translateX(0);
-            }
-        /* Desktop: sidebar luôn mở */
-        @media (min-width: 1024px) {
-            .sidebar {
-                position: relative;
-                transform: translateX(0);
-                width: 260px;
-            }
-
-            .menu-toggle {
-                display: none;
-            }
+            z-index: 10;
         }
 
         .logo-area {
             display: flex;
             align-items: center;
             gap: 12px;
-            margin-bottom: 40px;
+            margin-bottom: 48px;
             padding-left: 8px;
         }
 
@@ -81,12 +57,14 @@
             justify-content: center;
             color: white;
             font-size: 18px;
+            box-shadow: 0 6px 12px -8px rgba(30, 58, 138, 0.3);
         }
 
         .logo-text {
             font-weight: 700;
             font-size: 20px;
             color: #0a2540;
+            letter-spacing: -0.3px;
         }
 
         .nav-menu {
@@ -111,6 +89,7 @@
 
             .nav-item i {
                 width: 24px;
+                font-size: 1.2rem;
             }
 
             .nav-item.active {
@@ -119,72 +98,30 @@
                 font-weight: 600;
             }
 
-        /* Nút menu hamburger */
-        .menu-toggle {
-            position: fixed;
-            top: 16px;
-            left: 16px;
-            z-index: 30;
-            background: #1e3a8a;
-            color: white;
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            cursor: pointer;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            border: none;
-        }
-
-        @media (min-width: 1024px) {
-            .menu-toggle {
-                display: none;
-            }
-        }
-
-        /* Overlay khi mở sidebar trên mobile */
-        .sidebar-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.4);
-            z-index: 15;
-            display: none;
-        }
-
-            .sidebar-overlay.active {
-                display: block;
+            .nav-item:hover:not(.active) {
+                background: #f5f7fc;
+                color: #1e3a8a;
             }
 
-        /* MAIN CONTENT */
         .main-content {
             flex: 1;
             display: flex;
             flex-direction: column;
             overflow-y: auto;
             background: #f7f9fc;
-            width: 100%;
         }
 
-        /* HEADER */
         .header {
             background: #ffffff;
-            padding: 12px 20px;
+            padding: 16px 32px;
             display: flex;
             justify-content: space-between;
             align-items: center;
             border-bottom: 1px solid #eef2f6;
-            flex-wrap: wrap;
-            gap: 10px;
         }
 
         .system-title h2 {
-            font-size: 1.2rem;
+            font-size: 1.5rem;
             font-weight: 600;
             background: linear-gradient(135deg, #1E3A8A, #2563eb);
             -webkit-background-clip: text;
@@ -195,21 +132,28 @@
         .header-actions {
             display: flex;
             align-items: center;
-            gap: 16px;
+            gap: 28px;
+        }
+
+        .notification-bell {
+            position: relative;
+            font-size: 1.4rem;
+            color: #4b5563;
+            cursor: pointer;
         }
 
         .user-profile {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 12px;
             background: #f3f4f6;
-            padding: 4px 12px;
+            padding: 6px 16px 6px 12px;
             border-radius: 40px;
         }
 
         .user-avatar {
-            width: 32px;
-            height: 32px;
+            width: 38px;
+            height: 38px;
             background: #1e3a8a;
             border-radius: 50%;
             display: flex;
@@ -217,21 +161,21 @@
             justify-content: center;
             color: white;
             font-weight: bold;
-            font-size: 0.8rem;
         }
 
-        /* TOP ALERT BAR */
         .top-alert-bar {
             background: #fee2e2;
             border-left: 6px solid #dc2626;
-            padding: 10px 16px;
-            margin: 12px 16px;
+            padding: 12px 24px;
+            margin: 0 32px 16px 32px;
             border-radius: 12px;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 12px;
             font-weight: 600;
-            font-size: 0.85rem;
+            color: #991b1b;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
         }
 
             .top-alert-bar.warning {
@@ -240,161 +184,289 @@
                 color: #92400e;
             }
 
+            .top-alert-bar.info {
+                background: #dbeafe;
+                border-left-color: #3b82f6;
+                color: #1e40af;
+            }
+
             .top-alert-bar.hidden {
                 display: none;
             }
 
-        /* DASHBOARD WRAPPER */
         .dashboard-wrapper {
-            padding: 16px;
+            padding: 0 32px 28px 32px;
             display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        @media (min-width: 1024px) {
-            .dashboard-wrapper {
-                flex-direction: row;
-                padding: 24px 32px;
-            }
-
-            .main-stats {
-                flex: 2;
-            }
-
-            .right-panel {
-                flex: 1.2;
-            }
+            gap: 28px;
+            flex: 1;
         }
 
         .main-stats {
+            flex: 2;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
         }
 
         .stats-cards {
             display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 12px;
-        }
-
-        @media (min-width: 640px) {
-            .stats-cards {
-                grid-template-columns: repeat(4, 1fr);
-                gap: 16px;
-            }
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
         }
 
         .stat-card {
             background: white;
-            border-radius: 20px;
-            padding: 14px;
+            border-radius: 24px;
+            padding: 20px;
             display: flex;
             align-items: center;
             justify-content: space-between;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.03);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
 
         .stat-info h4 {
-            font-size: 0.7rem;
-            margin-bottom: 4px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #6c757d;
+            margin-bottom: 8px;
         }
 
         .stat-value {
-            font-size: 1.4rem;
+            font-size: 2rem;
             font-weight: 700;
+            color: #1e293b;
         }
 
         .stat-unit {
-            font-size: 0.7rem;
+            font-size: 0.9rem;
+            font-weight: 400;
+            color: #6c757d;
         }
 
         .stat-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 20px;
-            font-size: 1.2rem;
+            width: 48px;
+            height: 48px;
+            border-radius: 24px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
         }
+
+            .stat-icon.temp {
+                background: #fee2e2;
+                color: #ef4444;
+            }
+
+            .stat-icon.humidity {
+                background: #dbeafe;
+                color: #3b82f6;
+            }
+
+            .stat-icon.gas {
+                background: #fef3c7;
+                color: #f59e0b;
+            }
+
+            .stat-icon.fire {
+                background: #fee2e2;
+                color: #dc2626;
+            }
 
         .charts-container {
-            display: flex;
-            flex-direction: column;
-            gap: 20px;
-        }
-
-        @media (min-width: 768px) {
-            .charts-container {
-                flex-direction: row;
-            }
-
-            .chart-card {
-                flex: 1;
-            }
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
         }
 
         .chart-card {
             background: white;
-            border-radius: 20px;
-            padding: 16px;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+        }
+
+        .chart-title {
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            color: #1e293b;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
 
         canvas {
-            max-height: 200px;
+            max-height: 250px;
             width: 100%;
         }
 
         .right-panel {
+            flex: 1;
             display: flex;
             flex-direction: column;
-            gap: 20px;
+            gap: 24px;
         }
 
         .alert-card, .log-card, .access-card {
             background: white;
-            border-radius: 20px;
-            padding: 16px;
+            border-radius: 24px;
+            padding: 20px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
         }
 
         .card-title {
-            font-size: 0.9rem;
-            margin-bottom: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 16px;
+            border-left: 4px solid #1e3a8a;
+            padding-left: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
         }
 
         .alert-list, .log-list, .access-log {
-            max-height: 180px;
+            max-height: 200px;
             overflow-y: auto;
         }
 
+        .alert-item {
+            padding: 12px;
+            background: #fef2f2;
+            border-left: 4px solid #dc2626;
+            border-radius: 12px;
+            margin-bottom: 12px;
+        }
+
+            .alert-item.warning {
+                background: #fef3c7;
+                border-left-color: #f59e0b;
+            }
+
+            .alert-item.info {
+                background: #dbeafe;
+                border-left-color: #3b82f6;
+            }
+
         .log-item, .access-item {
-            font-size: 0.75rem;
-            padding: 8px 0;
+            padding: 10px 0;
+            border-bottom: 1px solid #f0f0f0;
+            display: flex;
+            gap: 12px;
+            font-size: 0.85rem;
+        }
+
+        .building-grid {
+            margin-top: 20px;
+            max-height: 280px;
+            overflow-y: auto;
+        }
+
+        .floor-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 0.8rem;
+        }
+
+        .floor-label {
+            width: 60px;
+            font-weight: 600;
+        }
+
+        .apartments {
+            display: flex;
+            gap: 8px;
+            flex-wrap: wrap;
         }
 
         .apt-card {
-            width: 42px;
-            padding: 4px;
-            font-size: 0.65rem;
+            width: 50px;
+            padding: 6px;
+            background: #eef2ff;
+            border-radius: 12px;
+            text-align: center;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
         }
 
-        .fire-overlay .fire-alert-card {
-            padding: 20px 30px;
-            font-size: 1.2rem;
-            text-align: center;
+            .apt-card.has-data {
+                background: #d9f0ec;
+                border: 1px solid #2b9348;
+            }
+
+        .status-badge {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.7rem;
+            font-weight: 600;
+        }
+
+        .fire-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(220, 38, 38, 0.3);
+            backdrop-filter: blur(3px);
+            z-index: 1000;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            pointer-events: none;
+        }
+
+        .fire-alert-card {
+            background: #b91c1c;
+            padding: 30px 60px;
+            border-radius: 60px;
+            color: white;
+            font-weight: 800;
+            font-size: 2rem;
+            letter-spacing: 4px;
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.8);
+            animation: alertPulse 1s infinite;
+        }
+
+        @keyframes alertPulse {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+            100% {
+                transform: scale(1.03);
+                opacity: 0.95;
+            }
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        @media (max-width: 1200px) {
+            .dashboard-wrapper {
+                flex-direction: column;
+            }
+
+            .stats-cards {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
     </style>
 </head>
 <body>
-
-    <!-- Nút menu mobile -->
-    <button class="menu-toggle" id="menuToggle"><i class="fas fa-bars"></i></button>
-    <div class="sidebar-overlay" id="sidebarOverlay"></div>
-
     <div class="app-container">
-        <aside class="sidebar" id="sidebar">
+        <aside class="sidebar">
             <div class="logo-area">
                 <div class="logo-icon"><i class="fas fa-building"></i></div>
-                <div class="logo-text">UrbanNest</div>
+                <div class="logo-text">LDBuilding</div>
             </div>
             <div class="nav-menu">
                 <div class="nav-item active"><i class="fas fa-chart-line"></i> Dashboard</div>
@@ -413,7 +485,8 @@
                     <div class="notification-bell"><i class="far fa-bell"></i></div>
                     <div class="user-profile">
                         <div class="user-avatar">AD</div>
-                        <span>Admin</span>
+                        <span>Admin Nguyễn</span>
+                        <i class="fas fa-chevron-down" style="font-size:12px"></i>
                     </div>
                 </div>
             </header>
@@ -426,36 +499,80 @@
             <div class="dashboard-wrapper">
                 <div class="main-stats">
                     <div class="stats-cards">
-                        <div class="stat-card"><div class="stat-info"><h4>Nhiệt độ</h4><div class="stat-value"><span id="tempValue">--</span><span class="stat-unit">°C</span></div></div><div class="stat-icon temp"><i class="fas fa-thermometer-half"></i></div></div>
-                        <div class="stat-card"><div class="stat-info"><h4>Độ ẩm</h4><div class="stat-value"><span id="humValue">--</span><span class="stat-unit">%</span></div></div><div class="stat-icon humidity"><i class="fas fa-tint"></i></div></div>
-                        <div class="stat-card"><div class="stat-info"><h4>Khí gas</h4><div class="stat-value"><span id="gasValue">--</span><span class="stat-unit">ppm</span></div></div><div class="stat-icon gas"><i class="fas fa-smog"></i></div></div>
-                        <div class="stat-card"><div class="stat-info"><h4>Lửa</h4><div class="stat-value" id="fireStatus">--</div></div><div class="stat-icon fire"><i class="fas fa-fire"></i></div></div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h4>Nhiệt độ</h4>
+                                <div class="stat-value"><span id="tempValue">--</span><span class="stat-unit">°C</span></div>
+                            </div>
+                            <div class="stat-icon temp"><i class="fas fa-thermometer-half"></i></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h4>Độ ẩm</h4>
+                                <div class="stat-value"><span id="humValue">--</span><span class="stat-unit">%</span></div>
+                            </div>
+                            <div class="stat-icon humidity"><i class="fas fa-tint"></i></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h4>Khí gas</h4>
+                                <div class="stat-value"><span id="gasValue">--</span><span class="stat-unit">ppm</span></div>
+                            </div>
+                            <div class="stat-icon gas"><i class="fas fa-smog"></i></div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-info">
+                                <h4>Trạng thái lửa</h4>
+                                <div class="stat-value" id="fireStatus">--</div>
+                            </div>
+                            <div class="stat-icon fire"><i class="fas fa-fire"></i></div>
+                        </div>
                     </div>
 
                     <div class="charts-container">
-                        <div class="chart-card"><div class="chart-title"><i class="fas fa-chart-line"></i> Nhiệt độ</div><canvas id="tempChart"></canvas></div>
-                        <div class="chart-card"><div class="chart-title"><i class="fas fa-chart-line"></i> Độ ẩm</div><canvas id="humChart"></canvas></div>
+                        <div class="chart-card">
+                            <div class="chart-title"><i class="fas fa-chart-line"></i> Biểu đồ nhiệt độ (°C)</div>
+                            <canvas id="tempChart"></canvas>
+                        </div>
+                        <div class="chart-card">
+                            <div class="chart-title"><i class="fas fa-chart-line"></i> Biểu đồ độ ẩm (%)</div>
+                            <canvas id="humChart"></canvas>
+                        </div>
                     </div>
 
                     <div class="chart-card">
                         <div class="chart-title"><i class="fas fa-building"></i> Sơ đồ tòa nhà (10 tầng)</div>
-                        <div class="building-grid" id="buildingGrid" style="max-height: 200px; overflow-y: auto;"></div>
+                        <div class="building-grid" id="buildingGrid"></div>
                     </div>
                 </div>
 
                 <div class="right-panel">
-                    <div class="alert-card"><div class="card-title"><i class="fas fa-exclamation-triangle"></i> Cảnh báo</div><div class="alert-list" id="alertList"><div class="alert-item info">✅ Hệ thống bình thường</div></div></div>
-                    <div class="log-card"><div class="card-title"><i class="fas fa-history"></i> Log sự kiện</div><div class="log-list" id="eventLogList"></div></div>
-                    <div class="access-card"><div class="card-title"><i class="fas fa-id-card"></i> Kiểm soát ra vào</div><div class="access-log" id="accessLogList"></div></div>
+                    <div class="alert-card">
+                        <div class="card-title"><i class="fas fa-exclamation-triangle"></i> Cảnh báo bất thường</div>
+                        <div class="alert-list" id="alertList">
+                            <div class="alert-item info">✅ Hệ thống đang hoạt động bình thường</div>
+                        </div>
+                    </div>
+
+                    <div class="log-card">
+                        <div class="card-title"><i class="fas fa-history"></i> Log sự kiện</div>
+                        <div class="log-list" id="eventLogList"></div>
+                    </div>
+
+                    <div class="access-card">
+                        <div class="card-title"><i class="fas fa-id-card"></i> Kiểm soát ra vào</div>
+                        <div class="access-log" id="accessLogList"></div>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
 
-    <div id="fireOverlay" class="fire-overlay hidden"><div class="fire-alert-card">⚠️ CẢNH BÁO CHÁY ⚠️</div></div>
+    <div id="fireOverlay" class="fire-overlay hidden">
+        <div class="fire-alert-card">⚠️ CẢNH BÁO CHÁY ⚠️</div>
+    </div>
 
     <script>
-        // Firebase & logic (giữ nguyên như bản trước, chỉ thêm mobile menu)
         const FIREBASE_URL = 'https://firehouse-da379-default-rtdb.asia-southeast1.firebasedatabase.app/cam_bien.json';
         let tempData = [], humData = [], labels = [];
         let tempChart, humChart;
@@ -475,29 +592,21 @@
             }
             renderBuilding();
         }
+
         function renderBuilding() {
             const container = document.getElementById('buildingGrid');
-            if (!container) return;
             container.innerHTML = '';
             for (let f = 1; f <= TOTAL_FLOORS; f++) {
                 const floorRooms = rooms.filter(r => r.floor === f);
                 const floorDiv = document.createElement('div');
                 floorDiv.className = 'floor-row';
-                floorDiv.style.display = 'flex'; floorDiv.style.alignItems = 'center'; floorDiv.style.gap = '8px'; floorDiv.style.marginBottom = '6px';
-                floorDiv.innerHTML = `<div style="width:45px; font-weight:600;">Tầng ${f}</div>`;
+                floorDiv.innerHTML = `<div class="floor-label">Tầng ${f}</div>`;
                 const aptContainer = document.createElement('div');
-                aptContainer.style.display = 'flex'; aptContainer.style.gap = '6px'; aptContainer.style.flexWrap = 'wrap';
+                aptContainer.className = 'apartments';
                 floorRooms.forEach(room => {
                     const aptDiv = document.createElement('div');
                     aptDiv.className = `apt-card ${room.hasData ? 'has-data' : ''}`;
-                    aptDiv.style.background = room.hasData ? '#d9f0ec' : '#eef2ff';
-                    aptDiv.style.borderRadius = '10px';
-                    aptDiv.style.padding = '4px 6px';
-                    aptDiv.style.fontSize = '0.7rem';
-                    aptDiv.style.fontWeight = '600';
-                    aptDiv.style.textAlign = 'center';
-                    aptDiv.style.cursor = 'pointer';
-                    aptDiv.innerText = room.code;
+                    aptDiv.innerHTML = room.code;
                     aptContainer.appendChild(aptDiv);
                 });
                 floorDiv.appendChild(aptContainer);
@@ -505,30 +614,180 @@
             }
         }
 
-        function addEventLog(msg, type = 'info') { const t = new Date().toLocaleTimeString('vi-VN'); eventLogs.unshift({ time: t, message: msg, type }); if (eventLogs.length > 15) eventLogs.pop(); renderEventLog(); }
-        function addAccessLog(act, det) { const t = new Date().toLocaleTimeString('vi-VN'); accessLogs.unshift({ time: t, action: act, detail: det }); if (accessLogs.length > 10) accessLogs.pop(); renderAccessLog(); }
-        function renderEventLog() { const c = document.getElementById('eventLogList'); if (!c) return; if (!eventLogs.length) { c.innerHTML = '<div>Chưa có sự kiện</div>'; return; } c.innerHTML = eventLogs.map(l => `<div class="log-item"><i class="fas fa-circle" style="font-size:6px; color:${l.type === 'fire' ? '#dc2626' : '#3b82f6'}"></i><span><strong>[${l.time}]</strong> ${l.message}</span></div>`).join(''); }
-        function renderAccessLog() { const c = document.getElementById('accessLogList'); if (!c) return; if (!accessLogs.length) { c.innerHTML = '<div>Chưa có dữ liệu</div>'; return; } c.innerHTML = accessLogs.map(l => `<div class="access-item"><i class="fas ${l.action === 'Thẻ từ' ? 'fa-id-card' : 'fa-camera'}"></i><div><strong>${l.action}</strong><br><small>${l.detail} • ${l.time}</small></div></div>`).join(''); }
-        function addAlert(msg, type = 'warning') { const container = document.getElementById('alertList'); if (!container) return; const div = document.createElement('div'); div.className = `alert-item ${type}`; div.innerHTML = `<i class="fas ${type === 'danger' ? 'fa-skull-crosswalk' : (type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle')}"></i> ${msg}`; container.prepend(div); if (container.children.length > 5) container.removeChild(container.lastChild); }
-        function evaluateAlertStatus(temp, hum, smoke, hasFire) { if (smoke > 4000) return { level: 'danger', message: '⚠️ NGUY HIỂM CAO (khí gas >4000ppm)' }; else if (temp > 70 || hum < 30) { let r = []; if (temp > 70) r.push(`nhiệt độ ${temp}°C >70°C`); if (hum < 30) r.push(`độ ẩm ${hum}% <30%`); return { level: 'warning', message: `🔥 CẢNH BÁO (${r.join(' và ')})` }; } else if (hasFire) return { level: 'danger', message: '🔥 CÓ LỬA !!! Phát hiện cháy' }; else return { level: 'safe', message: 'AN TOÀN' }; }
-        function updateTopAlertBar(alert) { const bar = document.getElementById('topAlertBar'); const msgSpan = document.getElementById('alertMessage'); if (!bar) return; if (alert.level === 'safe') { bar.classList.add('hidden'); return; } bar.classList.remove('hidden'); bar.className = 'top-alert-bar'; if (alert.level === 'danger') bar.classList.add('warning'); else if (alert.level === 'warning') bar.classList.add('warning'); msgSpan.innerText = alert.message; }
-        function updateUI(data) { const temp = data.nhiet_do, hum = data.do_am, smoke = data.khoi_gas, hasFire = (parseInt(data.lua) === 1); document.getElementById('tempValue').innerText = temp; document.getElementById('humValue').innerText = hum; document.getElementById('gasValue').innerText = smoke; document.getElementById('fireStatus').innerHTML = hasFire ? '<span style="color:#dc2626">⚠️ CHÁY</span>' : '<span style="color:#2e7d32">✓ An toàn</span>'; const alert = evaluateAlertStatus(temp, hum, smoke, hasFire); if (currentAlertMessage !== alert.message) { currentAlertMessage = alert.message; if (alert.level !== 'safe') { addEventLog(alert.message, alert.level === 'danger' ? 'fire' : 'warning'); addAlert(alert.message, alert.level); } else { if (currentAlertMessage !== 'AN TOÀN') addEventLog('✅ Hệ thống trở về trạng thái AN TOÀN', 'info'); } updateTopAlertBar(alert); } if (hasFire && !fireActive) { fireActive = true; const ov = document.getElementById('fireOverlay'); if (ov) ov.classList.remove('hidden'); } else if (!hasFire && fireActive) { fireActive = false; const ov = document.getElementById('fireOverlay'); if (ov) ov.classList.add('hidden'); } const now = new Date().toLocaleTimeString(); labels.push(now); tempData.push(temp); humData.push(hum); if (labels.length > 20) { labels.shift(); tempData.shift(); humData.shift(); } updateCharts(); }
-        function initCharts() { const ctxTemp = document.getElementById('tempChart')?.getContext('2d'); const ctxHum = document.getElementById('humChart')?.getContext('2d'); if (ctxTemp) tempChart = new Chart(ctxTemp, { type: 'line', data: { labels, datasets: [{ label: 'Nhiệt độ (°C)', data: tempData, borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.1)', tension: 0.3, fill: true }] }, options: { responsive: true, maintainAspectRatio: true } }); if (ctxHum) humChart = new Chart(ctxHum, { type: 'line', data: { labels, datasets: [{ label: 'Độ ẩm (%)', data: humData, borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.1)', tension: 0.3, fill: true }] }, options: { responsive: true, maintainAspectRatio: true } }); }
-        function updateCharts() { if (tempChart) { tempChart.data.labels = labels; tempChart.data.datasets[0].data = tempData; tempChart.update(); } if (humChart) { humChart.data.labels = labels; humChart.data.datasets[0].data = humData; humChart.update(); } }
-        async function fetchFirebaseData() { try { const res = await fetch(FIREBASE_URL); const data = await res.json(); if (data && typeof data === 'object') updateUI(data); } catch (e) { console.error(e); addAlert('❌ Lỗi kết nối cảm biến', 'danger'); } }
-        function simulateAccess() { const actions = ['Thẻ từ', 'Nhận diện khuôn mặt']; const details = ['Cư dân 101 ra vào', 'Quản lý ra vào lobby', 'Cư dân 202 quẹt thẻ', 'Nhân viên bảo vệ']; const a = actions[Math.floor(Math.random() * actions.length)]; const d = details[Math.floor(Math.random() * details.length)]; addAccessLog(a, d); }
-        function init() { initRooms(); initCharts(); fetchFirebaseData(); addEventLog('Hệ thống khởi động - Dashboard thông minh', 'info'); addAccessLog('Khởi tạo', 'Hệ thống sẵn sàng'); setInterval(fetchFirebaseData, 10000); setInterval(simulateAccess, 30000); }
-        init();
+        function addEventLog(message, type = 'info') {
+            const time = new Date().toLocaleTimeString('vi-VN');
+            eventLogs.unshift({ time, message, type });
+            if (eventLogs.length > 15) eventLogs.pop();
+            renderEventLog();
+        }
 
-        // Mobile menu
-        const menuToggle = document.getElementById('menuToggle');
-        const sidebar = document.getElementById('sidebar');
-        const overlay = document.getElementById('sidebarOverlay');
-        function closeSidebar() { sidebar.classList.remove('open'); overlay.classList.remove('active'); }
-        function openSidebar() { sidebar.classList.add('open'); overlay.classList.add('active'); }
-        if (menuToggle) menuToggle.addEventListener('click', (e) => { e.stopPropagation(); if (sidebar.classList.contains('open')) closeSidebar(); else openSidebar(); });
-        if (overlay) overlay.addEventListener('click', closeSidebar);
-        window.addEventListener('resize', () => { if (window.innerWidth >= 1024) closeSidebar(); });
+        function addAccessLog(action, detail) {
+            const time = new Date().toLocaleTimeString('vi-VN');
+            accessLogs.unshift({ time, action, detail });
+            if (accessLogs.length > 10) accessLogs.pop();
+            renderAccessLog();
+        }
+
+        function renderEventLog() {
+            const container = document.getElementById('eventLogList');
+            if (!eventLogs.length) { container.innerHTML = '<div class="log-item">Chưa có sự kiện</div>'; return; }
+            container.innerHTML = eventLogs.map(log => `
+                <div class="log-item">
+                    <i class="fas fa-circle" style="font-size:8px; align-self:center; color:${log.type === 'fire' ? '#dc2626' : '#3b82f6'}"></i>
+                    <span><strong>[${log.time}]</strong> ${log.message}</span>
+                </div>
+            `).join('');
+        }
+
+        function renderAccessLog() {
+            const container = document.getElementById('accessLogList');
+            if (!accessLogs.length) { container.innerHTML = '<div>Chưa có dữ liệu ra vào</div>'; return; }
+            container.innerHTML = accessLogs.map(log => `
+                <div class="access-item">
+                    <i class="fas ${log.action === 'Thẻ từ' ? 'fa-id-card' : 'fa-camera'}"></i>
+                    <div><strong>${log.action}</strong><br><small>${log.detail} • ${log.time}</small></div>
+                </div>
+            `).join('');
+        }
+
+        function addAlert(message, type = 'warning') {
+            const alertContainer = document.getElementById('alertList');
+            const alertDiv = document.createElement('div');
+            alertDiv.className = `alert-item ${type}`;
+            alertDiv.innerHTML = `<i class="fas ${type === 'danger' ? 'fa-skull-crosswalk' : (type === 'warning' ? 'fa-exclamation-triangle' : 'fa-info-circle')}"></i> ${message}`;
+            alertContainer.prepend(alertDiv);
+            if (alertContainer.children.length > 5) alertContainer.removeChild(alertContainer.lastChild);
+        }
+
+        function evaluateAlertStatus(temp, hum, smoke, hasFire) {
+            if (smoke > 4000) {
+                return { level: 'danger', message: '⚠️ NGUY HIỂM CAO (khí gas vượt ngưỡng 4000ppm)' };
+            }
+            else if (temp > 70 || hum < 30) {
+                let reason = [];
+                if (temp > 70) reason.push(`nhiệt độ ${temp}°C > 70°C`);
+                if (hum < 30) reason.push(`độ ẩm ${hum}% < 30%`);
+                return { level: 'warning', message: `🔥 CẢNH BÁO MÔI TRƯỜNG (${reason.join(' và ')})` };
+            }
+            else if (hasFire) {
+                return { level: 'danger', message: '🔥 CÓ LỬA !!! Phát hiện cháy' };
+            }
+            else {
+                return { level: 'safe', message: 'AN TOÀN' };
+            }
+        }
+
+        function updateTopAlertBar(alert) {
+            const bar = document.getElementById('topAlertBar');
+            const msgSpan = document.getElementById('alertMessage');
+            if (alert.level === 'safe') {
+                bar.classList.add('hidden');
+                return;
+            }
+            bar.classList.remove('hidden');
+            bar.className = 'top-alert-bar';
+            if (alert.level === 'danger') bar.classList.add('warning');
+            else if (alert.level === 'warning') bar.classList.add('warning');
+            else bar.classList.add('info');
+            msgSpan.innerText = alert.message;
+        }
+
+        function updateUI(data) {
+            const temp = data.nhiet_do;
+            const hum = data.do_am;
+            const smoke = data.khoi_gas;
+            const hasFire = parseInt(data.lua) === 1;
+
+            document.getElementById('tempValue').innerText = temp;
+            document.getElementById('humValue').innerText = hum;
+            document.getElementById('gasValue').innerText = smoke;
+            document.getElementById('fireStatus').innerHTML = hasFire ? '<span style="color:#dc2626">⚠️ CHÁY</span>' : '<span style="color:#2e7d32">✓ An toàn</span>';
+
+            const alert = evaluateAlertStatus(temp, hum, smoke, hasFire);
+            if (currentAlertMessage !== alert.message) {
+                currentAlertMessage = alert.message;
+                if (alert.level !== 'safe') {
+                    addEventLog(alert.message, alert.level === 'danger' ? 'fire' : 'warning');
+                    addAlert(alert.message, alert.level);
+                } else {
+                    if (currentAlertMessage !== 'AN TOÀN') {
+                        addEventLog('✅ Hệ thống trở về trạng thái AN TOÀN', 'info');
+                    }
+                }
+                updateTopAlertBar(alert);
+            }
+
+            if (hasFire && !fireActive) {
+                fireActive = true;
+                document.getElementById('fireOverlay').classList.remove('hidden');
+            } else if (!hasFire && fireActive) {
+                fireActive = false;
+                document.getElementById('fireOverlay').classList.add('hidden');
+            }
+
+            const now = new Date().toLocaleTimeString();
+            labels.push(now);
+            tempData.push(temp);
+            humData.push(hum);
+            if (labels.length > 20) {
+                labels.shift();
+                tempData.shift();
+                humData.shift();
+            }
+            updateCharts();
+        }
+
+        function initCharts() {
+            const ctxTemp = document.getElementById('tempChart').getContext('2d');
+            const ctxHum = document.getElementById('humChart').getContext('2d');
+            tempChart = new Chart(ctxTemp, {
+                type: 'line',
+                data: { labels, datasets: [{ label: 'Nhiệt độ (°C)', data: tempData, borderColor: '#ef4444', backgroundColor: 'rgba(239,68,68,0.1)', tension: 0.3, fill: true }] },
+                options: { responsive: true, maintainAspectRatio: true }
+            });
+            humChart = new Chart(ctxHum, {
+                type: 'line',
+                data: { labels, datasets: [{ label: 'Độ ẩm (%)', data: humData, borderColor: '#3b82f6', backgroundColor: 'rgba(59,130,246,0.1)', tension: 0.3, fill: true }] },
+                options: { responsive: true, maintainAspectRatio: true }
+            });
+        }
+
+        function updateCharts() {
+            if (tempChart) { tempChart.data.labels = labels; tempChart.data.datasets[0].data = tempData; tempChart.update(); }
+            if (humChart) { humChart.data.labels = labels; humChart.data.datasets[0].data = humData; humChart.update(); }
+        }
+
+        async function fetchFirebaseData() {
+            try {
+                const response = await fetch(FIREBASE_URL);
+                const data = await response.json();
+                console.log('Firebase data:', data);
+                if (data && typeof data === 'object') updateUI(data);
+            } catch (error) {
+                console.error('Lỗi fetch Firebase:', error);
+                addAlert('❌ Lỗi kết nối đến cảm biến', 'danger');
+            }
+        }
+
+        function simulateAccess() {
+            const actions = ['Thẻ từ', 'Nhận diện khuôn mặt'];
+            const details = ['Cư dân 101 ra vào cổng A', 'Quản lý ra vào khu vực lobby', 'Cư dân 202 quẹt thẻ', 'Nhân viên bảo vệ điểm danh'];
+            const randomAction = actions[Math.floor(Math.random() * actions.length)];
+            const randomDetail = details[Math.floor(Math.random() * details.length)];
+            addAccessLog(randomAction, randomDetail);
+        }
+
+        function init() {
+            initRooms();
+            initCharts();
+            fetchFirebaseData();
+            addEventLog('Hệ thống khởi động - Dashboard giám sát thông minh', 'info');
+            addAccessLog('Khởi tạo', 'Hệ thống kiểm soát ra vào sẵn sàng');
+            setInterval(fetchFirebaseData, 10000);
+            setInterval(simulateAccess, 30000);
+        }
+
+        init();
     </script>
 </body>
 </html>
