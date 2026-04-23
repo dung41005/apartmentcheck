@@ -1,13 +1,13 @@
 ﻿<!DOCTYPE html>
 <html lang="vi">
 <head>
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes, viewport-fit=cover">
     <title>Apartment Management System | Dashboard thông minh</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0/dist/chart.umd.min.js"></script>
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>">
     <style>
         * {
             margin: 0;
@@ -55,7 +55,34 @@
                 .sidebar.open {
                     transform: translateX(0);
                 }
+            /* Ẩn QR code trên mobile */
+            .qr-code-container {
+                display: none;
+            }
         }
+
+        /* QR code chỉ hiển thị trên desktop */
+        .qr-code-container {
+            margin-top: auto;
+            padding-top: 20px;
+            text-align: center;
+            border-top: 1px solid #eef2f6;
+        }
+
+            .qr-code-container img {
+                width: 120px;
+                height: 120px;
+                border-radius: 12px;
+                background: white;
+                padding: 8px;
+                box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            }
+
+            .qr-code-container p {
+                font-size: 0.7rem;
+                color: #6c757d;
+                margin-top: 8px;
+            }
 
         .logo-area {
             display: flex;
@@ -666,6 +693,11 @@
                 <div class="nav-item"><i class="fas fa-fire-extinguisher"></i> Báo cháy</div>
                 <div class="nav-item"><i class="fas fa-video"></i> Camera</div>
                 <div class="nav-item"><i class="fas fa-sliders-h"></i> Cài đặt</div>
+                <!-- Thêm QR code ngay dưới mục Cài đặt, chỉ hiển thị trên desktop -->
+                <div class="qr-code-container">
+                    <img src="qr.png" alt="Mã QR truy cập nhanh">
+                    <p>Quét mã để truy cập</p>
+                </div>
             </div>
         </aside>
 
